@@ -1,4 +1,4 @@
-import { NavbarV2 } from "@/components/v2/NavbarV2";
+import { NavbarV8 } from "@/components/NavbarV8";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -65,11 +65,7 @@ const MerchandisingHub = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <NavbarV2 
-        onAdminToggle={() => setIsAdminMode(!isAdminMode)} 
-        isAdminMode={isAdminMode}
-        isScrolled={isScrolled}
-      />
+      <NavbarV8 />
       
       <main className="container mx-auto px-6 py-8 max-w-7xl">
         {/* Breadcrumb with animated journey indicator */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavbarV2 } from "@/components/v2/NavbarV2";
+import { NavbarV8 } from "@/components/NavbarV8";
 import { HierarchicalNav } from "@/components/navigation/HierarchicalNav";
 import { ChatSearch } from "@/components/navigation/ChatSearch";
 
@@ -14,11 +14,7 @@ export default function NavigationSearch() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "hsl(var(--v2-background))" }}>
-      <NavbarV2 
-        onAdminToggle={() => setIsAdminMode(!isAdminMode)}
-        isAdminMode={isAdminMode}
-        isScrolled={isScrolled}
-      />
+      <NavbarV8 />
       
       <div 
         className="flex-1 overflow-auto"
