@@ -20,7 +20,7 @@ interface SidebarV8Props {
 }
 
 const categories = [
-  { id: "home-v2", label: "Home v2", icon: Home },
+  { id: "home-v2", label: "Home", icon: Home },
   { id: "customer", label: "Customer", icon: Users },
   { id: "finance", label: "Finance", icon: DollarSign },
   { id: "merchandising", label: "Merchandising", icon: ShoppingBag },
