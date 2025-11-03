@@ -85,7 +85,7 @@ export const AllDashboardsExplores = () => {
       {/* Filters */}
       <div className="flex flex-wrap gap-3 mb-6">
         <Select value={domainFilter} onValueChange={setDomainFilter}>
-          <SelectTrigger className="w-[180px] bg-background">
+          <SelectTrigger className="w-full sm:w-[180px] bg-background">
             <SelectValue placeholder="Domain" />
           </SelectTrigger>
           <SelectContent className="bg-popover">
@@ -98,7 +98,7 @@ export const AllDashboardsExplores = () => {
         </Select>
 
         <Select value={subdomainFilter} onValueChange={setSubdomainFilter}>
-          <SelectTrigger className="w-[180px] bg-background">
+          <SelectTrigger className="w-full sm:w-[180px] bg-background">
             <SelectValue placeholder="Subdomain" />
           </SelectTrigger>
           <SelectContent className="bg-popover">
@@ -111,7 +111,7 @@ export const AllDashboardsExplores = () => {
         </Select>
 
         <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-[180px] bg-background">
+          <SelectTrigger className="w-full sm:w-[180px] bg-background">
             <SelectValue placeholder="Type" />
           </SelectTrigger>
           <SelectContent className="bg-popover">
@@ -122,7 +122,7 @@ export const AllDashboardsExplores = () => {
         </Select>
 
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-[180px] bg-background">
+          <SelectTrigger className="w-full sm:w-[180px] bg-background">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent className="bg-popover">
@@ -134,7 +134,7 @@ export const AllDashboardsExplores = () => {
         </Select>
 
         <Select value={ownerFilter} onValueChange={setOwnerFilter}>
-          <SelectTrigger className="w-[180px] bg-background">
+          <SelectTrigger className="w-full sm:w-[180px] bg-background">
             <SelectValue placeholder="Owner" />
           </SelectTrigger>
           <SelectContent className="bg-popover">
@@ -148,16 +148,16 @@ export const AllDashboardsExplores = () => {
       </div>
 
       {/* Table */}
-      <div className="rounded-lg border border-border bg-card overflow-hidden">
+      <div className="rounded-lg border border-border bg-card overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50 hover:bg-muted/50">
-              <TableHead className="font-semibold">Type</TableHead>
-              <TableHead className="font-semibold">Name</TableHead>
-              <TableHead className="font-semibold">Domain</TableHead>
-              <TableHead className="font-semibold">Subdomain</TableHead>
-              <TableHead className="font-semibold">Status</TableHead>
-              <TableHead className="font-semibold">Owner</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap">Type</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap min-w-[200px]">Name</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap">Domain</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap">Subdomain</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap">Status</TableHead>
+              <TableHead className="font-semibold whitespace-nowrap">Owner</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -166,7 +166,7 @@ export const AllDashboardsExplores = () => {
                 key={index}
                 className="cursor-pointer hover:bg-muted/50 transition-colors h-[72px]"
               >
-                <TableCell>
+                <TableCell className="whitespace-nowrap">
                   <div className="flex items-center gap-2">
                     {asset.type === "Dashboard" ? (
                       <LayoutGrid className="h-4 w-4 text-muted-foreground" />
@@ -176,15 +176,15 @@ export const AllDashboardsExplores = () => {
                     <span className="text-sm">{asset.type}</span>
                   </div>
                 </TableCell>
-                <TableCell className="font-medium">{asset.name}</TableCell>
-                <TableCell className="text-muted-foreground">{asset.domain}</TableCell>
-                <TableCell className="text-muted-foreground">{asset.subdomain}</TableCell>
-                <TableCell>
+                <TableCell className="font-medium whitespace-nowrap">{asset.name}</TableCell>
+                <TableCell className="text-muted-foreground whitespace-nowrap">{asset.domain}</TableCell>
+                <TableCell className="text-muted-foreground whitespace-nowrap">{asset.subdomain}</TableCell>
+                <TableCell className="whitespace-nowrap">
                   <Badge variant="secondary" className={getStatusColor(asset.status)}>
                     {asset.status}
                   </Badge>
                 </TableCell>
-                <TableCell className="text-muted-foreground">{asset.owner}</TableCell>
+                <TableCell className="text-muted-foreground whitespace-nowrap">{asset.owner}</TableCell>
               </TableRow>
             ))}
           </TableBody>

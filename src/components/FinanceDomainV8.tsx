@@ -155,10 +155,10 @@ export const FinanceDomainV8 = () => {
   };
 
   return (
-    <div className="p-8 lg:p-12">
+    <div className="p-4 sm:p-6 lg:p-12">
       <div className="max-w-[1800px] mx-auto">
         {/* Header Section with Title and Info Cards */}
-        <div className="mb-6 flex items-center justify-between gap-8">
+        <div className="mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           {/* Page Title & Subtitle - Left Side */}
           <div>
             <h2 className="text-2xl font-semibold text-foreground mb-2">Finance Data Directory</h2>
@@ -168,8 +168,8 @@ export const FinanceDomainV8 = () => {
           </div>
 
           {/* Info Cards - Right Side */}
-          <div className="flex gap-4 flex-shrink-0">
-            <Card className="p-4 flex items-center gap-3 hover:shadow-md transition-shadow cursor-pointer max-w-sm">
+          <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+            <Card className="p-4 flex items-center gap-3 hover:shadow-md transition-shadow cursor-pointer w-full sm:max-w-sm">
               <BookOpen className="h-5 w-5 text-foreground flex-shrink-0" />
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Access & Onboarding</h3>
@@ -179,7 +179,7 @@ export const FinanceDomainV8 = () => {
               </div>
             </Card>
 
-            <Card className="p-4 flex items-center gap-3 hover:shadow-md transition-shadow cursor-pointer max-w-sm">
+            <Card className="p-4 flex items-center gap-3 hover:shadow-md transition-shadow cursor-pointer w-full sm:max-w-sm">
               <GraduationCap className="h-5 w-5 text-foreground flex-shrink-0" />
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Training & Resources</h3>

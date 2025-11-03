@@ -98,7 +98,7 @@ export const NavbarV8 = () => {
 
   return (
     <nav className="border-b border-border bg-background">
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-6 py-4 lg:pl-6 pl-16">
         <div className="relative flex-1 max-w-3xl mr-4" ref={dropdownRef}>
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />
           <Input
@@ -150,7 +150,7 @@ export const NavbarV8 = () => {
           )}
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4">
           <Button
             variant="ghost"
             size="sm"

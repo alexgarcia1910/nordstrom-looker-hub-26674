@@ -45,7 +45,7 @@ export const SidebarV8 = ({ selectedCategory, onCategorySelect, onAdminToggle, i
 
       <aside
         className={cn(
-          "fixed left-0 top-0 h-screen border-r border-border bg-background smooth-transition z-40 flex flex-col",
+          "fixed left-0 top-0 min-h-screen h-full border-r border-border bg-background smooth-transition z-40 flex flex-col overflow-y-auto",
           isCollapsed ? "w-20" : "w-64",
           isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}

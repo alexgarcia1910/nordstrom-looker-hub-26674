@@ -110,7 +110,7 @@ const V8 = () => {
         
         <main className="flex-1">
           {selectedCategory === "home-v2" ? (
-            <div className="p-8 lg:p-12">
+            <div className="p-4 sm:p-6 lg:p-12">
               {/* Welcome Banner */}
               <div className="mb-8 text-center">
                 <h1 className="text-4xl font-bold mb-2 text-foreground">
@@ -165,7 +165,7 @@ const V8 = () => {
           ) : selectedCategory === "technology" ? (
             <TechnologyDomainV8 />
           ) : (
-            <div className="p-8 lg:p-12">
+            <div className="p-4 sm:p-6 lg:p-12">
               {/* Welcome Banner */}
               <div className="mb-8 text-center">
                 <h1 className="text-4xl font-bold mb-2 text-foreground">
