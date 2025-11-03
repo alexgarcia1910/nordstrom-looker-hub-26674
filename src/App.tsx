@@ -5,10 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import V8 from "./pages/V8";
-import Admin from "./pages/Admin";
-import NavigationSearch from "./pages/NavigationSearch";
-import FinanceHub from "./pages/FinanceHub";
-import MerchandisingHub from "./pages/MerchandisingHub";
 import Alerts from "./pages/Alerts";
 import NotFound from "./pages/NotFound";
 
@@ -23,10 +19,6 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/v8" element={<V8 />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/navigation-search" element={<NavigationSearch />} />
-          <Route path="/finance" element={<FinanceHub />} />
-          <Route path="/merchandising" element={<MerchandisingHub />} />
           <Route path="/alerts" element={<Alerts />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
