@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayoutGrid, Search, BookOpen, GraduationCap } from "lucide-react";
+import { Heart, LayoutGrid, Search, BookOpen, GraduationCap, ExternalLink } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
@@ -113,15 +113,25 @@ export const StoreSellingDomainV8 = () => {
   const [subdomainFilter, setSubdomainFilter] = useState<string>("all");
   const [ownerFilter, setOwnerFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [favorites, setFavorites] = useState<Set<string>>(
+    new Set(mockData.filter(item => item.isFavorite).map(item => item.id))
+  );
+
+  const toggleFavorite = (id: string) => {
+    setFavorites(prev => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(id)) {
+        newFavorites.delete(id);
+      } else {
+        newFavorites.add(id);
+      }
+      return newFavorites;
+    });
+  };
 
   // Get unique values for filters
   const uniqueOwners = Array.from(new Set(mockData.map(item => item.owner))).sort();
-  const uniqueSubdomains = [
-    "Store Operations",
-    "Sales & Performance",
-    "Customer Experience",
-    "Workforce Planning"
-  ];
+  const uniqueSubdomains = ["Store Operations", "Sales & Performance", "Customer Experience", "Workforce Planning"];
 
   const filteredData = mockData.filter(item => {
     const matchesType = typeFilter === "all" || item.type === typeFilter;
@@ -151,9 +161,9 @@ export const StoreSellingDomainV8 = () => {
         <div className="mb-6 flex items-center justify-between gap-8">
           {/* Page Title & Subtitle - Left Side */}
           <div>
-            <h2 className="text-2xl font-semibold text-foreground mb-2">Store Selling Performance</h2>
+            <h2 className="text-2xl font-semibold text-foreground mb-2">Store Selling Data Directory</h2>
             <p className="text-sm text-muted-foreground">
-              Explore dashboards and explores tracking store operations, sales, and conversion metrics.
+              Browse dashboards and explores across all Store Selling subdomains.
             </p>
           </div>
 
@@ -164,7 +174,7 @@ export const StoreSellingDomainV8 = () => {
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Access & Onboarding</h3>
                 <p className="text-xs text-muted-foreground">
-                  Guides for store performance and retail analytics.
+                  Guides and onboarding resources for Store Selling teams.
                 </p>
               </div>
             </Card>
@@ -174,7 +184,7 @@ export const StoreSellingDomainV8 = () => {
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Training & Resources</h3>
                 <p className="text-xs text-muted-foreground">
-                  Learn how to navigate sales and operations dashboards.
+                  Learn best practices and explore analytics documentation for Store Selling.
                 </p>
               </div>
             </Card>
@@ -237,54 +247,81 @@ export const StoreSellingDomainV8 = () => {
           </div>
         </div>
 
-        {/* Card Grid Layout - Two cards per row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Card Row Layout - One card per row */}
+        <div className="space-y-4">
           {filteredData.length === 0 ? (
-            <div className="col-span-2 text-center py-12 text-muted-foreground">
+            <div className="text-center py-12 text-muted-foreground">
               No results found. Try adjusting your filters.
             </div>
           ) : (
             filteredData.map(item => (
               <Card
                 key={item.id}
-                className="p-5 hover:shadow-md transition-all cursor-pointer h-[180px] flex flex-col"
+                className="p-6 hover:shadow-md transition-all cursor-pointer group relative"
               >
-                <div className="flex items-start gap-3 mb-3">
-                  {/* Icon */}
-                  <div className="mt-0.5">
-                    {item.type === "Dashboard" ? (
-                      <LayoutGrid className="h-5 w-5 text-foreground" />
-                    ) : (
-                      <Search className="h-5 w-5 text-foreground" />
-                    )}
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left side - Icon and Content */}
+                  <div className="flex items-start gap-4 flex-1">
+                    {/* Icon */}
+                    <div className="mt-1">
+                      {item.type === "Dashboard" ? (
+                        <LayoutGrid className="h-5 w-5 text-foreground" />
+                      ) : (
+                        <Search className="h-5 w-5 text-foreground" />
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {item.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                        <span>{item.domain}</span>
+                        <span>/</span>
+                        <span>{item.subdomain}</span>
+                        <span>|</span>
+                        <span>{item.owner}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-base font-semibold text-foreground flex-1 line-clamp-2">
-                    {item.name}
-                  </h3>
-                </div>
+                  {/* Right side - Status Badge and Actions */}
+                  <div className="flex items-start gap-3">
+                    <Badge
+                      variant="outline"
+                      className={cn("text-xs whitespace-nowrap", getStatusBadgeColor(item.status))}
+                    >
+                      {item.status === "Operational" && "🟢 "}
+                      {item.status === "Warning" && "🟡 "}
+                      {item.status === "Critical" && "🔴 "}
+                      {item.status}
+                    </Badge>
 
-                {/* Metadata */}
-                <div className="text-xs text-muted-foreground mb-2 line-clamp-1">
-                  {item.domain} / {item.subdomain}
-                </div>
-
-                <div className="text-xs text-muted-foreground mb-3 line-clamp-1">
-                  Owner: {item.owner}
-                </div>
-
-                {/* Status Badge - Bottom Right */}
-                <div className="mt-auto flex justify-end">
-                  <Badge
-                    variant="outline"
-                    className={cn("text-xs", getStatusBadgeColor(item.status))}
-                  >
-                    {item.status === "Operational" && "🟢 "}
-                    {item.status === "Warning" && "🟡 "}
-                    {item.status === "Critical" && "🔴 "}
-                    {item.status}
-                  </Badge>
+                    {/* Hover Actions */}
+                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleFavorite(item.id);
+                        }}
+                        className="p-1 hover:bg-muted rounded"
+                      >
+                        <Heart
+                          className={cn(
+                            "h-4 w-4",
+                            favorites.has(item.id) ? "fill-red-500 text-red-500" : "text-muted-foreground"
+                          )}
+                        />
+                      </button>
+                      <button className="p-1 hover:bg-muted rounded">
+                        <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </Card>
             ))

@@ -21,94 +21,94 @@ const mockData: DirectoryItem[] = [
   {
     id: "1",
     type: "Dashboard",
-    name: "Monthly Budget Performance",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Track monthly budget vs actuals across all departments.",
+    name: "Customer 360 Dashboard",
+    domain: "Customer",
+    subdomain: "Customer Insights",
+    description: "Comprehensive view of customer profiles, preferences, and purchase history.",
     status: "Operational",
-    owner: "Finance Analytics Team",
+    owner: "Customer Analytics Team",
     isFavorite: false
   },
   {
     id: "2",
     type: "Explore",
-    name: "Budget Details Explore",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Deep dive into budget line items and allocation details.",
+    name: "Customer Segmentation Explore",
+    domain: "Customer",
+    subdomain: "Customer Insights",
+    description: "Analyze and create customer segments based on behavior and demographics.",
     status: "Warning",
-    owner: "Finance Analytics Team",
+    owner: "Customer Analytics Team",
     isFavorite: false
   },
   {
     id: "3",
     type: "Dashboard",
-    name: "OPEX Variance by Region",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Regional operating expense variance analysis dashboard.",
-    status: "Critical",
-    owner: "Regional Finance",
+    name: "Loyalty Program Dashboard",
+    domain: "Customer",
+    subdomain: "Loyalty & Rewards",
+    description: "Track loyalty program engagement, points redemption, and member benefits.",
+    status: "Operational",
+    owner: "Loyalty Team",
     isFavorite: false
   },
   {
     id: "4",
     type: "Dashboard",
-    name: "Financial Performance Dashboard",
-    domain: "Finance",
-    subdomain: "Performance & KPIs",
-    description: "Tracks financial performance metrics and KPI trends across divisions.",
-    status: "Operational",
-    owner: "Finance Analytics Team",
+    name: "NPS & Satisfaction Dashboard",
+    domain: "Customer",
+    subdomain: "Feedback & NPS",
+    description: "Monitor Net Promoter Score trends and customer satisfaction metrics.",
+    status: "Critical",
+    owner: "CX Team",
     isFavorite: false
   },
   {
     id: "5",
     type: "Explore",
-    name: "Cost Center Analysis Explore",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Analyze spending patterns by cost center and department.",
+    name: "Customer Lifetime Value Explore",
+    domain: "Customer",
+    subdomain: "Retention Analysis",
+    description: "Calculate and analyze customer lifetime value and retention patterns.",
     status: "Warning",
-    owner: "Finance Analytics Team",
+    owner: "Customer Analytics Team",
     isFavorite: false
   },
   {
     id: "6",
     type: "Dashboard",
-    name: "Accounts Payable Overview",
-    domain: "Finance",
-    subdomain: "AP & AR",
-    description: "Comprehensive view of accounts payable aging and trends.",
+    name: "Churn Prediction Dashboard",
+    domain: "Customer",
+    subdomain: "Retention Analysis",
+    description: "Identify at-risk customers and predict churn likelihood.",
     status: "Operational",
-    owner: "AP Team",
+    owner: "Customer Analytics Team",
     isFavorite: false
   },
   {
     id: "7",
     type: "Dashboard",
-    name: "Profitability by Product Line",
-    domain: "Finance",
-    subdomain: "Profitability Analysis",
-    description: "Detailed profitability metrics segmented by product.",
+    name: "Customer Feedback Summary",
+    domain: "Customer",
+    subdomain: "Feedback & NPS",
+    description: "Aggregate customer feedback across channels with sentiment analysis.",
     status: "Operational",
-    owner: "Finance Analytics Team",
+    owner: "CX Team",
     isFavorite: false
   },
   {
     id: "8",
     type: "Explore",
-    name: "Margin Analysis Explore",
-    domain: "Finance",
-    subdomain: "Profitability Analysis",
-    description: "Interactive exploration of margin trends and drivers.",
+    name: "Purchase Behavior Explore",
+    domain: "Customer",
+    subdomain: "Customer Insights",
+    description: "Deep dive into purchase patterns, frequency, and product preferences.",
     status: "Critical",
-    owner: "Finance Analytics Team",
+    owner: "Customer Analytics Team",
     isFavorite: false
   }
 ];
 
-export const FinanceDomainV8 = () => {
+export const CustomerDomainV8 = () => {
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [subdomainFilter, setSubdomainFilter] = useState<string>("all");
   const [ownerFilter, setOwnerFilter] = useState<string>("all");
@@ -131,7 +131,7 @@ export const FinanceDomainV8 = () => {
 
   // Get unique values for filters
   const uniqueOwners = Array.from(new Set(mockData.map(item => item.owner))).sort();
-  const uniqueSubdomains = ["Budgeting & Forecasting", "Performance & KPIs", "AP & AR", "Profitability Analysis"];
+  const uniqueSubdomains = ["Customer Insights", "Loyalty & Rewards", "Feedback & NPS", "Retention Analysis"];
 
   const filteredData = mockData.filter(item => {
     const matchesType = typeFilter === "all" || item.type === typeFilter;
@@ -161,9 +161,9 @@ export const FinanceDomainV8 = () => {
         <div className="mb-6 flex items-center justify-between gap-8">
           {/* Page Title & Subtitle - Left Side */}
           <div>
-            <h2 className="text-2xl font-semibold text-foreground mb-2">Finance Data Directory</h2>
+            <h2 className="text-2xl font-semibold text-foreground mb-2">Customer Data Directory</h2>
             <p className="text-sm text-muted-foreground">
-              Browse dashboards and explores across all Finance subdomains.
+              Browse dashboards and explores across all Customer subdomains.
             </p>
           </div>
 
@@ -174,7 +174,7 @@ export const FinanceDomainV8 = () => {
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Access & Onboarding</h3>
                 <p className="text-xs text-muted-foreground">
-                  Guides and onboarding resources for Finance teams.
+                  Guides and onboarding resources for Customer teams.
                 </p>
               </div>
             </Card>
@@ -184,7 +184,7 @@ export const FinanceDomainV8 = () => {
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Training & Resources</h3>
                 <p className="text-xs text-muted-foreground">
-                  Learn best practices and explore analytics documentation for Finance.
+                  Learn best practices and explore analytics documentation for Customer.
                 </p>
               </div>
             </Card>

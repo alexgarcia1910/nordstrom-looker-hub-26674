@@ -21,94 +21,94 @@ const mockData: DirectoryItem[] = [
   {
     id: "1",
     type: "Dashboard",
-    name: "Monthly Budget Performance",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Track monthly budget vs actuals across all departments.",
+    name: "System Health Dashboard",
+    domain: "Technology",
+    subdomain: "System Health",
+    description: "Monitor uptime, performance, and health metrics across all systems.",
     status: "Operational",
-    owner: "Finance Analytics Team",
+    owner: "Platform Engineering Team",
     isFavorite: false
   },
   {
     id: "2",
     type: "Explore",
-    name: "Budget Details Explore",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Deep dive into budget line items and allocation details.",
+    name: "API Performance Explore",
+    domain: "Technology",
+    subdomain: "Application Metrics",
+    description: "Analyze API response times, error rates, and usage patterns.",
     status: "Warning",
-    owner: "Finance Analytics Team",
+    owner: "API Team",
     isFavorite: false
   },
   {
     id: "3",
     type: "Dashboard",
-    name: "OPEX Variance by Region",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Regional operating expense variance analysis dashboard.",
-    status: "Critical",
-    owner: "Regional Finance",
+    name: "Incident Management Dashboard",
+    domain: "Technology",
+    subdomain: "Support Tickets",
+    description: "Track incident resolution times, severity, and team performance.",
+    status: "Operational",
+    owner: "Support Team",
     isFavorite: false
   },
   {
     id: "4",
     type: "Dashboard",
-    name: "Financial Performance Dashboard",
-    domain: "Finance",
-    subdomain: "Performance & KPIs",
-    description: "Tracks financial performance metrics and KPI trends across divisions.",
-    status: "Operational",
-    owner: "Finance Analytics Team",
+    name: "Data Quality Dashboard",
+    domain: "Technology",
+    subdomain: "Data Governance",
+    description: "Monitor data quality metrics, completeness, and accuracy scores.",
+    status: "Critical",
+    owner: "Data Engineering Team",
     isFavorite: false
   },
   {
     id: "5",
     type: "Explore",
-    name: "Cost Center Analysis Explore",
-    domain: "Finance",
-    subdomain: "Budgeting & Forecasting",
-    description: "Analyze spending patterns by cost center and department.",
+    name: "Infrastructure Cost Explore",
+    domain: "Technology",
+    subdomain: "Application Metrics",
+    description: "Analyze cloud infrastructure costs and optimization opportunities.",
     status: "Warning",
-    owner: "Finance Analytics Team",
+    owner: "DevOps Team",
     isFavorite: false
   },
   {
     id: "6",
     type: "Dashboard",
-    name: "Accounts Payable Overview",
-    domain: "Finance",
-    subdomain: "AP & AR",
-    description: "Comprehensive view of accounts payable aging and trends.",
+    name: "Application Error Dashboard",
+    domain: "Technology",
+    subdomain: "Application Metrics",
+    description: "Track application errors, exceptions, and failure patterns.",
     status: "Operational",
-    owner: "AP Team",
+    owner: "Development Team",
     isFavorite: false
   },
   {
     id: "7",
     type: "Dashboard",
-    name: "Profitability by Product Line",
-    domain: "Finance",
-    subdomain: "Profitability Analysis",
-    description: "Detailed profitability metrics segmented by product.",
+    name: "ServiceNow Ticket Summary",
+    domain: "Technology",
+    subdomain: "Support Tickets",
+    description: "Comprehensive view of ServiceNow tickets by category and priority.",
     status: "Operational",
-    owner: "Finance Analytics Team",
+    owner: "Support Team",
     isFavorite: false
   },
   {
     id: "8",
     type: "Explore",
-    name: "Margin Analysis Explore",
-    domain: "Finance",
-    subdomain: "Profitability Analysis",
-    description: "Interactive exploration of margin trends and drivers.",
+    name: "Data Lineage Explore",
+    domain: "Technology",
+    subdomain: "Data Governance",
+    description: "Explore data lineage, dependencies, and transformation workflows.",
     status: "Critical",
-    owner: "Finance Analytics Team",
+    owner: "Data Engineering Team",
     isFavorite: false
   }
 ];
 
-export const FinanceDomainV8 = () => {
+export const TechnologyDomainV8 = () => {
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [subdomainFilter, setSubdomainFilter] = useState<string>("all");
   const [ownerFilter, setOwnerFilter] = useState<string>("all");
@@ -131,7 +131,7 @@ export const FinanceDomainV8 = () => {
 
   // Get unique values for filters
   const uniqueOwners = Array.from(new Set(mockData.map(item => item.owner))).sort();
-  const uniqueSubdomains = ["Budgeting & Forecasting", "Performance & KPIs", "AP & AR", "Profitability Analysis"];
+  const uniqueSubdomains = ["System Health", "Application Metrics", "Support Tickets", "Data Governance"];
 
   const filteredData = mockData.filter(item => {
     const matchesType = typeFilter === "all" || item.type === typeFilter;
@@ -161,9 +161,9 @@ export const FinanceDomainV8 = () => {
         <div className="mb-6 flex items-center justify-between gap-8">
           {/* Page Title & Subtitle - Left Side */}
           <div>
-            <h2 className="text-2xl font-semibold text-foreground mb-2">Finance Data Directory</h2>
+            <h2 className="text-2xl font-semibold text-foreground mb-2">Technology Data Directory</h2>
             <p className="text-sm text-muted-foreground">
-              Browse dashboards and explores across all Finance subdomains.
+              Browse dashboards and explores across all Technology subdomains.
             </p>
           </div>
 
@@ -174,7 +174,7 @@ export const FinanceDomainV8 = () => {
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Access & Onboarding</h3>
                 <p className="text-xs text-muted-foreground">
-                  Guides and onboarding resources for Finance teams.
+                  Guides and onboarding resources for Technology teams.
                 </p>
               </div>
             </Card>
@@ -184,7 +184,7 @@ export const FinanceDomainV8 = () => {
               <div>
                 <h3 className="font-semibold text-sm text-foreground">Training & Resources</h3>
                 <p className="text-xs text-muted-foreground">
-                  Learn best practices and explore analytics documentation for Finance.
+                  Learn best practices and explore analytics documentation for Technology.
                 </p>
               </div>
             </Card>

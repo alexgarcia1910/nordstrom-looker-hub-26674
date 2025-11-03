@@ -3,12 +3,13 @@ import { NavbarV8 } from "@/components/NavbarV8";
 import { SidebarV8 } from "@/components/SidebarV8";
 import { ActivityCard } from "@/components/ActivityCard";
 import { InfoBannerV8 } from "@/components/InfoBannerV8";
+import { CustomerDomainV8 } from "@/components/CustomerDomainV8";
 import { FinanceDomainV8 } from "@/components/FinanceDomainV8";
 import { MerchandisingDomainV8 } from "@/components/MerchandisingDomainV8";
 import { StoreSellingDomainV8 } from "@/components/StoreSellingDomainV8";
-import { Heart, Clock, LayoutGrid, ShieldAlert, ShieldX, X } from "lucide-react";
+import { TechnologyDomainV8 } from "@/components/TechnologyDomainV8";
+import { Heart, Clock, LayoutGrid, ShieldAlert, X } from "lucide-react";
 import { AllDashboardsExplores } from "@/components/AllDashboardsExplores";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,7 +19,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 
 const favoritesData = [
   { name: "Sales Performance Dashboard", domain: "Finance", timestamp: "Last opened 2 days ago" },
@@ -154,6 +154,8 @@ const V8 = () => {
 
               <AllDashboardsExplores />
             </div>
+          ) : selectedCategory === "customer" ? (
+            <CustomerDomainV8 />
           ) : selectedCategory === "finance" ? (
             <FinanceDomainV8 />
           ) : selectedCategory === "merchandising" ? (
@@ -161,31 +163,7 @@ const V8 = () => {
           ) : selectedCategory === "store-selling" ? (
             <StoreSellingDomainV8 />
           ) : selectedCategory === "technology" ? (
-            <div className="flex items-center justify-center min-h-[70vh]">
-              <Card className="max-w-lg w-full text-center p-8">
-                <CardContent className="space-y-6">
-                  <div className="flex justify-center">
-                    <ShieldX className="h-16 w-16 text-muted-foreground" />
-                  </div>
-                  <div className="space-y-3">
-                    <h2 className="text-2xl font-semibold text-foreground">
-                      🚫 Access Restricted
-                    </h2>
-                    <p className="text-base text-muted-foreground leading-relaxed">
-                      You don't have permission to view the Technology domain.
-                      <br />
-                      Please contact your administrator if you need access.
-                    </p>
-                  </div>
-                  <Button 
-                    onClick={() => handleRequestAccess("Technology")}
-                    className="w-full max-w-xs bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
-                    Request Access
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+            <TechnologyDomainV8 />
           ) : (
             <div className="p-8 lg:p-12">
               {/* Welcome Banner */}
