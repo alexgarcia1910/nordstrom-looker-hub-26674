@@ -259,11 +259,11 @@ export const StoreSellingDomainV8 = () => {
                 key={item.id}
                 className="p-6 hover:shadow-md transition-all cursor-pointer group relative"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                   {/* Left side - Icon and Content */}
-                  <div className="flex items-start gap-4 flex-1">
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
                     {/* Icon */}
-                    <div className="mt-1">
+                    <div className="mt-1 flex-shrink-0">
                       {item.type === "Dashboard" ? (
                         <LayoutGrid className="h-5 w-5 text-foreground" />
                       ) : (
@@ -272,11 +272,11 @@ export const StoreSellingDomainV8 = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <h3 className="text-lg font-semibold text-foreground mb-2">
                         {item.name}
                       </h3>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
                         <span>{item.domain}</span>
                         <span>/</span>
                         <span>{item.subdomain}</span>
@@ -290,7 +290,7 @@ export const StoreSellingDomainV8 = () => {
                   </div>
 
                   {/* Right side - Status Badge and Actions */}
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 flex-shrink-0">
                     <Badge
                       variant="outline"
                       className={cn("text-xs whitespace-nowrap", getStatusBadgeColor(item.status))}
@@ -302,7 +302,7 @@ export const StoreSellingDomainV8 = () => {
                     </Badge>
 
                     {/* Hover Actions */}
-                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="hidden sm:flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
