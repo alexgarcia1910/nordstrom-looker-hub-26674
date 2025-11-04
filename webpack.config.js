@@ -43,6 +43,9 @@ module.exports = {
     compress: true,
     port: 8080,
     hot: true,
+    https: true,
+    host: 'localhost',
+    allowedHosts: 'all',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
