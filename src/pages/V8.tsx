@@ -197,7 +197,7 @@ const V8 = () => {
                   actionHref="#"
                 />
                 
-                <ActivityCard
+              <ActivityCard
                   icon={LayoutGrid}
                   title="Boards"
                   description="View or organize collections of dashboards and reports grouped by topic."
@@ -207,6 +207,7 @@ const V8 = () => {
                 />
               </div>
 
+              <AllDashboardsExplores />
             </div>
           )}
         </main>
